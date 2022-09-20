@@ -8,30 +8,43 @@
 Console.Write("Сколько строк вы хотите ввести: ");
 int arrayLength = Convert.ToInt32(Console.ReadLine());
 
-string[] array = new string[arrayLength]; 
+if (arrayLength <= 0) goto End;
+
+string?[] array = new string[arrayLength];
+
+int maxStringLength = 3;
 
 for (int i = 0; i < arrayLength; i++)
 {
-    Console.Write($"Введите {i+1}-ю строку: ");
+    Console.Write($"Введите {i + 1}-ю строку: ");
     array[i] = Console.ReadLine();
 }
 
-string[] GetResultArray(string[] array, int arrayLength)
+
+// Метод с двумя циклами:
+
+
+// В первом записываем в новый массив такой же длинны все 
+// строки с 3 и меньше символами и считаем их колличество.
+
+// Во втором записываем всё в результирующий массив нужной 
+// длинны благодаря первому колличеству в первом цикле.
+string?[] GetResultArray(string?[] array, int arrayLength, int maxStringLength)
 {
-    string[] array2 = new string[arrayLength];
+    string?[] array2 = new string?[arrayLength];
 
     int arrayLengthResult = 0;
 
     for (int i = 0; i < arrayLength; i++)
     {
-        if(array[i].Length <= 3)
+        if (array[i]?.Length <= maxStringLength)
         {
             array2[arrayLengthResult] = array[i];
             arrayLengthResult++;
         }
     }
 
-    string[] arrayResult = new string[arrayLengthResult];
+    string?[] arrayResult = new string[arrayLengthResult];
 
     for (int i = 0; i < arrayLengthResult; i++)
     {
@@ -41,7 +54,8 @@ string[] GetResultArray(string[] array, int arrayLength)
     return arrayResult;
 }
 
-void PrintArray(string[] array)
+// Метод печати массива
+void PrintArray(string?[] array)
 {
     Console.WriteLine();
     for (int i = 0; i < array.Length; i++)
@@ -50,6 +64,12 @@ void PrintArray(string[] array)
         Console.WriteLine();
     }
 }
-string[] arrayResult = GetResultArray(array, arrayLength);
+string?[] arrayResult = GetResultArray(array, arrayLength, maxStringLength);
 
 PrintArray(arrayResult);
+
+End: if (arrayLength <= 0)
+{
+    Console.WriteLine();
+    Console.WriteLine("Колличество строк не может равнятся нулю или менее.");
+}
