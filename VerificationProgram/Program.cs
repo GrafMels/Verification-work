@@ -69,8 +69,19 @@ string?[] arrayResult = GetResultArray(array, arrayLength, maxStringLength);
 
 PrintArray(arrayResult);
 
+//Если в массиве не строк равных 3 или менее
+if (arrayResult.Length == 0)
+{
+    Console.WriteLine();
+    Console.WriteLine("Нет строк, с колличеством символов 3 или менее");
+}
+
+// Вывод ввода нулевого или отрицательного значения
 End: if (arrayLength <= 0)
 {
     Console.WriteLine();
     Console.WriteLine("Колличество строк не может равнятся нулю или менее.");
 }
+
+
+
