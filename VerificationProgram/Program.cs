@@ -12,7 +12,7 @@ if (arrayLength <= 0) goto End;
 
 string?[] array = new string[arrayLength];
 
-int maxStringLength = 3;
+const int maxStringLength = 3;
 
 for (int i = 0; i < arrayLength; i++)
 {
@@ -29,6 +29,7 @@ for (int i = 0; i < arrayLength; i++)
 
 // Во втором записываем всё в результирующий массив нужной 
 // длинны благодаря первому колличеству в первом цикле.
+
 string?[] GetResultArray(string?[] array, int arrayLength, int maxStringLength)
 {
     string?[] array2 = new string?[arrayLength];
